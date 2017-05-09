@@ -1,0 +1,25 @@
+<h1><%= @customer.address %></h1>
+</br>
+</br>
+
+<% x = @customer.tips.sum(:cent) %>
+<% if x > 99 %>
+<% y = x / 100 %>
+<% x = x % 100 %>
+<% d = @customer.tips.sum(:dollar) + y %>
+<% mean_tip_dollar = d / @customer.tips.count %>
+<% mean_tip_cent = x / @customer.tips.count %>
+<h4><%= mean_tip_dollar %>.<%= mean_tip_cent %></h4>
+<% end %>
+
+<h3>Enter a tip for customer:</h3>
+<%= render 'tips/form' %>
+<%= link_to "Customer Index", root_path %>
+</br>
+</br>
+<%= link_to "Did this customer move?", 
+edit_customer_path(@customer) %>
+</br>
+</br>
+<%= link_to "Delete Customer", customer_path(@customer),
+method: :delete, data: { confirm: "Delete this customer?"} %>

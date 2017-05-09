@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  dollar: 1
+  cent: 1
+  customer_id: 
+  user_id: 
+
+two:
+  dollar: 1
+  cent: 1
+  customer_id: 
+  user_id: 
