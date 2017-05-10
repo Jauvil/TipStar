@@ -1,5 +1,5 @@
 <%= simple_form_for([@customer, @customer.tips.build]) do |f| %>
-<%= f.input :dollar, label: "Dollar(s)" %>
-<%= f.input :cent, label: "Cent(s)" %>
+<%= f.input :dollar, label: "Dollar(s)", required: true %>
+<%= f.input :cent, label: "Cent(s)", required: true %>
 <%= f.button :submit %>
 <% end %>
