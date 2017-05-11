@@ -10,24 +10,18 @@ development:
   encoding: utf8
   database: tip_star_dev
   pool: 5
-  username: justin
-  password: password
 
 test: &TEST
   adapter: postgresql
   encoding: utf8
   database: tip_star_test
   pool: 5
-  username: justin
-  password: password
 
 Production:
   adapter: postgresql
   encoding: utf8
   database: tip_star_production
   pool: 5
-  username: justin
-  password: password
 
 
 # Warning: The database defined as "test" will be erased and
