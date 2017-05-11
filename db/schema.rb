@@ -13,6 +13,9 @@
 
 ActiveRecord::Schema.define(version: 20170509060635) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "customers", force: :cascade do |t|
     t.string   "address"
     t.datetime "created_at", null: false
@@ -29,8 +32,8 @@ ActiveRecord::Schema.define(version: 20170509060635) do
     t.datetime "updated_at",  null: false
   end
 
-  add_index "tips", ["customer_id"], name: "index_tips_on_customer_id"
-  add_index "tips", ["user_id"], name: "index_tips_on_user_id"
+  add_index "tips", ["customer_id"], name: "index_tips_on_customer_id", using: :btree
+  add_index "tips", ["user_id"], name: "index_tips_on_user_id", using: :btree
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
@@ -47,7 +50,9 @@ ActiveRecord::Schema.define(version: 20170509060635) do
     t.datetime "updated_at",                          null: false
   end
 
-  add_index "users", ["email"], name: "index_users_on_email", unique: true
-  add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+  add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
+  add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
+  add_foreign_key "tips", "customers"
+  add_foreign_key "tips", "users"
 end
