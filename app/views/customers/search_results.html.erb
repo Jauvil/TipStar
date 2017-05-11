@@ -1,5 +1,6 @@
-<h1>Search results for '<%= params[:search_keywords] %></h1>
+<h1>Search results for <%= params[:search_keywords] %>: </h1>
 
 <% @results.each do |result| %>
-<%= result.address %>
+<h4><%= result.address %></h4>
+<%= link_to "View Customer", customer_path(@customer), class: "btn btn-default" %>
 <% end %>
