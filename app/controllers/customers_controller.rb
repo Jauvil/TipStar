@@ -23,7 +23,16 @@ class CustomersController < ApplicationController
 	end
 	
 	def show
-	end
+	    @tip_array = @customer.tips.sort_by{ |tip| [tip.dollar, tip.cent]}
+		if @tip_array.count.even?
+           @center = @tip_array.count / 2
+        else
+           @center = (@tip_array.count + 1) / 2
+        end
+        @median_tip = @tip_array[@center - 1]
+		@high_tip = @tip_array.last
+		@last_tip = @customer.tips.last
+    end
 	
 	def edit
 	end
@@ -41,6 +50,17 @@ class CustomersController < ApplicationController
 		redirect_to root_path
 	end
 
+	def search_results
+        keywords = params[:search_keywords]
+        @results = current_user.customers.where('user_id = ?, address like %?%', current_user, keywords).all
+	end
+    
+    def search
+
+    end
+
+
+
 private
 
     def set_customer
@@ -50,6 +70,8 @@ private
     def customer_params
     	params.require(:customer).permit(:address)
     end
+
+
 	
 
 end

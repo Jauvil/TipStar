@@ -1,0 +1,5 @@
+<h1>Search results for '<%= params[:search_keywords] %></h1>
+
+<% @results.each do |result| %>
+<%= result.address %>
+<% end %>
