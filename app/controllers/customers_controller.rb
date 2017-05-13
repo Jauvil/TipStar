@@ -1,5 +1,6 @@
 class CustomersController < ApplicationController
 	before_action :set_customer, only: [:show, :edit, :update, :destroy]
+	before_action :authenticate_user!, only: [:show, :edit, :update, :destroy]
 
 	def index
 		if user_signed_in?
@@ -26,10 +27,11 @@ class CustomersController < ApplicationController
 	    @tip_array = @customer.tips.sort_by{ |tip| [tip.dollar, tip.cent]}
 		if @tip_array.count.even?
            @center = @tip_array.count / 2
+           @median_tip = @tip_array[@center - 1]
         else
-           @center = (@tip_array.count + 1) / 2
+           @center = @tip_array.count / 2
+           @median_tip = @tip_array[@center]
         end
-        @median_tip = @tip_array[@center - 1]
 		@high_tip = @tip_array.last
 		@last_tip = @customer.tips.last
     end

@@ -1,5 +1,6 @@
 class TipsController < ApplicationController
   before_action :set_customer, only: [:create]
+  before_action :authenticate_user!
 
 	def create
 		@tip = @customer.tips.create(tip_params)

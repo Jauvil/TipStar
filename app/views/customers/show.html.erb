@@ -2,17 +2,29 @@
 </br>
 </br>
 <% if @last_tip != nil %>
+<% if @last_tip.cent < 10 %>
+<h4>Most recent tip: $<%= @last_tip.dollar %>.0<%= @last_tip.cent %></h4>
+<% else %>
 <h4>Most recent tip: $<%= @last_tip.dollar %>.<%= @last_tip.cent %></h4>
+<% end %>
 <% else %>
 <h4>Enter a tip below to begin tracking gratuities.</h4>
 <% end %>
 </br>
 <% if @median_tip != nil %>
+<% if @median_tip.cent < 10 %>
+<h4>Average tip: $<%= @median_tip.dollar %>.0<%= @median_tip.cent %></h4>
+<% else %>
 <h4>Average tip: $<%= @median_tip.dollar %>.<%= @median_tip.cent %></h4>
+<% end %>
 <% end %>
 </br>
 <% if @high_tip != nil %>
+<% if @high_tip.cent < 10 %>
+<h4>Highest tip: $<%= @high_tip.dollar %>.0<%= @high_tip.cent %></h4>
+<% else %>
 <h4>Highest tip: $<%= @high_tip.dollar %>.<%= @high_tip.cent %></h4>
+<% end %>
 <% end %>
 </br>
 </br>
