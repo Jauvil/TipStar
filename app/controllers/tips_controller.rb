@@ -5,9 +5,18 @@ class TipsController < ApplicationController
 	def create
 		@tip = @customer.tips.create(tip_params)
 		@tip.user_id = current_user.id
+		if @tip.dollar == nil
+			@tip.dollar = 0
+		end
+		if @tip.cent == nil 
+			@tip.cent = 0
+		end
 		
 		if @tip.save
 			redirect_to customer_path(@customer)
+		else 
+			render 'tips/_form'
+
 		end
 		
 	end

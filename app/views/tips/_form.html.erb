@@ -1,6 +1,7 @@
 <%= simple_form_for([@customer, @customer.tips.build]) do |f| %>
 <%= f.error_notification %>
-<%= f.input :dollar, label: "Dollar(s)", error: 'Can not be be left blank. Enter "0" if no dollars given.' %>
-<%= f.input :cent, label: "Cent(s)", error: 'Can not be be left blank. Enter "0" if no cents given.'  %>
+<%= f.input :dollar, label: "Dollar(s)" %> 
+<%= f.input :cent, label: "Cent(s)"  %>
 <%= f.button :submit %>
 <% end %>
+
