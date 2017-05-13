@@ -54,7 +54,7 @@ class CustomersController < ApplicationController
 
 	def search_results
         keywords = params[:search_keywords]
-        @results = current_user.customers.where(["address like ?", "%#{keywords}%"])
+        @results = current_user.customers.where(["address ILIKE ?", "%#{keywords}%"])
         @results.each do |r|
         	@customer = r.id
         end
