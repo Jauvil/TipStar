@@ -1,5 +1,5 @@
 <% @customers.each do |customer| %>
-<h2><%= customer.address %> <%= customer.address_two %></h2> 
+<h2><%= customer.street_address %></h2>
 <% all_customer_tips = customer.tips %>
 <% all_customer_tips_array = [] %>
 <% all_customer_tips.each do |tip| %>
@@ -13,10 +13,10 @@
 <% center = (sorted_all_customer_tips_array.count + 1) / 2 %>
 <% median_tip = sorted_all_customer_tips_array[center - 1] %>
 <% end %>
-<h2><%= customer.city %>, <%= customer.state %> <%= customer.zipcode %>
-	<% if median_tip != nil %>
+<h2><%= customer.city_state_zip %>
+	<% if median_tip.present? %>
 	<% if median_tip >= 5 %>
-	<h6>BIG TIPPER</h6>
+	<span class="badge">BIG TIPPER</span>
 	<% end %>
 	<% end %>
 </h2>
