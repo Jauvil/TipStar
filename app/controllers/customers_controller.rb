@@ -25,9 +25,9 @@ class CustomersController < ApplicationController
 	end
 	
 	def show
-		@median_tip = @customer.median_tip(current_user.id)
-		@high_tip = @customer.high_tip(current_user.id)
-		@last_tip = @customer.last_tip(current_user.id)
+		@median_tip = @customer.user_median_tip(current_user.id)
+		@high_tip = @customer.user_high_tip(current_user.id)
+		@last_tip = @customer.user_last_tip(current_user.id)
     end
 	
 	def edit

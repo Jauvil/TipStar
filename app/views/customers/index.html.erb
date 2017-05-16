@@ -1,21 +1,8 @@
 <% @customers.each do |customer| %>
 <h2><%= customer.street_address %></h2>
-<% all_customer_tips = customer.tips %>
-<% all_customer_tips_array = [] %>
-<% all_customer_tips.each do |tip| %>
-<% all_customer_tips_array.push(tip.dollar) %>
-<% end %>
-<% sorted_all_customer_tips_array = all_customer_tips_array.sort %>
-<% if sorted_all_customer_tips_array.count.even? %>
-<% center = sorted_all_customer_tips_array.count / 2 %>
-<% median_tip = sorted_all_customer_tips_array[center] %>
-<% else %>
-<% center = (sorted_all_customer_tips_array.count + 1) / 2 %>
-<% median_tip = sorted_all_customer_tips_array[center - 1] %>
-<% end %>
 <h2><%= customer.city_state_zip %>
-	<% if median_tip.present? %>
-	<% if median_tip >= 5 %>
+	<% if customer.customer_median_tip.present? %>
+	<% if customer.customer_median_tip.dollar >= 5 %>
 	<span class="badge">BIG TIPPER</span>
 	<% end %>
 	<% end %>
