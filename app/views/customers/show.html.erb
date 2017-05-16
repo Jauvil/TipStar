@@ -1,22 +1,14 @@
 <h1><%= @customer.address %></h1>
 </br>
 </br>
-<% if @last_tip != nil %>
-<% if @last_tip.cent < 10 %>
-<h4>Most recent tip: $<%= @last_tip.dollar %>.0<%= @last_tip.cent %></h4>
-<% else %>
-<h4>Most recent tip: $<%= @last_tip.dollar %>.<%= @last_tip.cent %></h4>
-<% end %>
+<% if @last_tip.present? %>
+<h4>Most recent tip: $<%= @last_tip.formatted_price.dollar %>.<%= @last_tip.formatted_price.cent %></h4>
 <% else %>
 <h4>Enter a tip below to begin tracking gratuities.</h4>
 <% end %>
 </br>
-<% if @median_tip != nil %>
-<% if @median_tip.cent < 10 %>
-<h4>Average tip: $<%= @median_tip.dollar %>.0<%= @median_tip.cent %></h4>
-<% else %>
+<% if @median_tip.present? %>
 <h4>Average tip: $<%= @median_tip.dollar %>.<%= @median_tip.cent %></h4>
-<% end %>
 <% end %>
 </br>
 <% if @high_tip != nil %>
@@ -38,3 +30,4 @@ edit_customer_path(@customer) %>
 </br>
 <%= link_to "Delete Customer", customer_path(@customer),
 method: :delete, data: { confirm: "Delete this customer?"} %>
+<p>1<%= @customer.median_tip(current_user.id) %></p>

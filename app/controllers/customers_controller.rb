@@ -25,17 +25,9 @@ class CustomersController < ApplicationController
 	end
 	
 	def show
-	    @user_customer_tips = Tip.where(user_id: current_user, customer_id: @customer).all
-	    @tip_array = @user_customer_tips.sort_by{ |tip| [tip.dollar, tip.cent]}
-		if @tip_array.count.even?
-           @center = @tip_array.count / 2
-           @median_tip = @tip_array[@center - 1]
-        else
-           @center = @tip_array.count / 2
-           @median_tip = @tip_array[@center]
-        end
-		@high_tip = @tip_array.last
-		@last_tip = @user_customer_tips.last
+		@median_tip = @customer.median_tip(current_user.id)
+		@high_tip = @customer.high_tip(current_user.id)
+		@last_tip = @customer.last_tip(current_user.id)
     end
 	
 	def edit
