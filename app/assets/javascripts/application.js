@@ -16,3 +16,7 @@
 //= require turbolinks
 //= require_tree .
 
+$('a[data-popup]').live('click', function(e) {
+	window.open( $(this).attr('href'));
+	e.defaultPrevented();
+});

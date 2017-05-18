@@ -8,13 +8,12 @@ class Customer < ActiveRecord::Base
     #Get the median tip of a customer where customer_id corresponds with self and user_id corresponds with argument
     def user_median_tip(user_id)
         tip_array = self.sorted_user_customer_tips(user_id)
-		center = tip_array.count / 2
-		if tip_array.count.even?
-            median_tip = tip_array[center - 1]
+        center = tip_array.count / 2
+        if tip_array.count.even?
+            user_median_tip = tip_array[center - 1]
         else
-            median_tip = tip_array[center]
+            user_median_tip = tip_array[center]
         end
-        median_tip
     end
 
     #Get the highest tip of a customer where customer_id corresponds with self and user_id corresponds with argument
@@ -61,9 +60,6 @@ class Customer < ActiveRecord::Base
         else
             customer_median_tip = tip_array[center]
         end
-        customer_median_tip
     end
-
-
 
 end
