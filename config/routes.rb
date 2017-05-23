@@ -18,5 +18,7 @@ Rails.application.routes.draw do
      put "/customers/:id", to: "customers#update"
      #Delete object from collection
      delete "/customers/:id", to: "customers#destroy"
+     get "/search_results", to: "customers#search_results"
+     get "/search", to: "customers#search"
   end
 end

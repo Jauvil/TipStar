@@ -16,7 +16,14 @@
 //= require turbolinks
 //= require_tree .
 
-$('a[data-popup]').live('click', function(e) {
-	window.open( $(this).attr('href'));
-	e.defaultPrevented();
+$( document ).ready(function() {//function saying wait for the DOM to load
+	$('#filterCustomer').on('keyup', function(e) {//function selecting input field and adding key up event listener
+		let searchKeywords = e.target.value;//assigning keywords to the value of whats typed in input field above
+
+		$.ajax({
+			url:"http://127.0.0.1:3000/api/customers"//making an ajax GET request to this address
+		}).done(function(customers){//function giving me my response
+			console.log(customers)
+		});
+	});
 });

@@ -37,7 +37,7 @@ class Customer < ActiveRecord::Base
 
     #Street address of customer in string type
     def street_address
-        self.address.to_s + self.address_two.to_s
+        self.address.to_s + " " + self.address_two.to_s
     end
     
     #City, State, Zipcode of customer in string type

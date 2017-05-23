@@ -15,3 +15,15 @@
  */
  @import "bootstrap-sprockets";
 @import "bootstrap";
+
+.modal-content {
+	background-color: #fefefe;
+	width: 80%;
+	padding: 20px;
+	border: 1px solid #888
+}
+#right-content {
+	background-color: red;
+	width: 33%;
+	height: 100%;
+}

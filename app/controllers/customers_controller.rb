@@ -8,6 +8,7 @@ class CustomersController < ApplicationController
 		  respond_to do |format|
 		  	format.html
 		  	format.json { render json: @customers, status: :ok}
+		  	format.js
 		  end
         else
 		  render '_no_sign_in'
@@ -16,19 +17,16 @@ class CustomersController < ApplicationController
 	
 	def new
 		@customer = Customer.new
-		respond_to do |format|
-			format.html
-			format.js
-		end
 	end
 	
 	def create
 		@customer = Customer.new(customer_params)
 		@customer.user_id = current_user.id
-        respond_to do |format|
-	    	format.html { redirect_to root_path }
-	    	format.js
-	    end
+		if @customer.save
+			redirect_to root_path
+		else
+			render 'new'
+		end
     end
 	
 	def show
@@ -60,10 +58,17 @@ class CustomersController < ApplicationController
 	def search_results
         keywords = params[:search_keywords]
         @customers = Customer.where(["address ILIKE ?", "%#{keywords}%"])
+        respond_to do |format|
+        	format.html
+        	format.json { render json: @customers, status: :ok }
+        end
 	end
     
     def search
-
+    	respond_to do |format|
+    		format.html
+    		format.json
+    	end
     end
 
 

@@ -23,8 +23,8 @@
       <% end %>
         
       <% if user_signed_in? %>
-      <li><%= link_to "Create Customer", new_customer_path, 'data-popup' => true %></li>
-      <li><%= link_to "Find Customer", search_path %></li>
+      <li><%= link_to "Create Customer", new_customer_path %></li>
+   <!--   <li><%= link_to "Find Customer", search_path %></li> -->
       <% end %>
       </ul>
       <% if user_signed_in? %>
@@ -36,12 +36,13 @@
         <% end %>
     </div>
   </nav>
-  <div class="customer_list">
-  </div>
   <div class="container">
        <p class="notice"><%= notice %></p>
        <p class="alert"><%= alert %></p>
-       <%= yield %>
+       <div class="row">
+          <%= yield %>
+       </div>
+
   </div>
 </body>
 </html>
