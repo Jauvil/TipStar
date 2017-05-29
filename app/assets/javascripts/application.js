@@ -17,13 +17,18 @@
 //= require_tree .
 
 $( document ).ready(function() {//function saying wait for the DOM to load
-	$('#filterCustomer').on('keyup', function(e) {//function selecting input field and adding key up event listener
-		let searchKeywords = e.target.value;//assigning keywords to the value of whats typed in input field above
-
+	$('#searchKeywords').on('keyup', function(e) {//function selecting input field and adding key up event listener
+		let searchWords = e.target.value;//assigning keywords to the value of whats typed in input field above
+    console.log(searchWords)
+    
 		$.ajax({
-			url:"http://127.0.0.1:3000/api/customers"//making an ajax GET request to this address
+			url:"http://127.0.0.1:3000/api/customers?address=" + searchWords //making an ajax GET request to this address
 		}).done(function(customers){//function giving me my response
 			console.log(customers)
+      $('.indexLeftContent').hide();
+      $('.indexLeftContent').append('<p>' + customers + '</p>');
 		});
 	});
 });
+//IT'S TIME TO START WORKING ON MY FOR LOOP TO ACTUALLY APPEND THEN WE WILL LEARN TO STYLE IT LIKE OTHER STUFF
+//I CAN USE BETTER SELECTORS AND TOGGLECLASS FUNCTION WITH CSS CLASSES TO MAKE STYLING EASIER

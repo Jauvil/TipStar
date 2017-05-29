@@ -3,7 +3,8 @@
 		respond_to :json
 
 		def index
-			respond_with Customer.all
+			address = params[:address]
+			respond_with Customer.where("address ILIKE ?", "%#{address}%")
 		end
 
 		def create

@@ -10,6 +10,9 @@ development:
   encoding: utf8
   database: tip_star_dev
   pool: 5
+  username: postgres
+  password: Jrga7777
+  host: localhost
 
 test: &TEST
   adapter: postgresql
