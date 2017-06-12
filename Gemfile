@@ -16,6 +16,7 @@ gem 'simple_form', '~> 3.4'
 gem 'devise', '~> 4.2', '>= 4.2.1'
 gem 'httparty', '~> 0.15.2'
 gem 'smartystreets_api', '~> 0.2.0'
+gem 'rack-cors', :require => 'rack/cors'
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
